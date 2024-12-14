@@ -49,7 +49,7 @@ const searchfunc=(e)=>{
 
     
     const hdesec = document.getElementById("hid");
-    hdesec.style.display = "none";
+    hdesec.innerHTML = "";
 
     const inputval=document.getElementById("val").value
     
