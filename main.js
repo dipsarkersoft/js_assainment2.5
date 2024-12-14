@@ -15,7 +15,10 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=`)
 
 const mealFrnt=(x)=>{
    
-    
+  allfood.innerHTML=""
+  srcsec.innerHTML=""
+  detaili.innerHTML=""
+
    x.forEach(data => {
     
         allfood.innerHTML+=`
@@ -56,6 +59,7 @@ const searchfunc=(e)=>{
     .then((data)=>{
 
         searchres(data)
+        console.log(data)
        
     })
             
@@ -65,11 +69,12 @@ const searchfunc=(e)=>{
 
 const searchres=(e)=>{
 
-
-
       if(e.meals == null){
 
-        srcsec.innerHTML = "";
+         allfood.innerHTML=""
+        srcsec.innerHTML=""
+        detaili.innerHTML=""
+
         srcsec.innerHTML+=
         
         ` <h1 class="fw-bold text-center text-danger">No Food find !</h1>
@@ -78,11 +83,14 @@ const searchres=(e)=>{
          
       else{
 
-        srcsec.innerHTML = "";
+        
+        allfood.innerHTML=""
+          srcsec.innerHTML=""
+          detaili.innerHTML=""
         const dta=e.meals
       
         dta.forEach(data => {
-            srcsec.innerHTML+=`
+          srcsec.innerHTML+=`
             <div class="col-md-4 mb-4">
                        <div class="card" style="width: 18rem;">
                            <img src=${data.strMealThumb} class="card-img-top" alt="...">
@@ -111,24 +119,18 @@ const searchres=(e)=>{
 
 
 
+
 const detailfunc=(d)=>{
 
-    
+  allfood.innerHTML=""
+  srcsec.innerHTML=""
+  detaili.innerHTML=""
+
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${d}`)
     .then((res)=>res.json())
     .then((data)=>{
          const res =data.meals
-
-
-         
-      
-        
-        srcsec.innerHTML = "";
-        allfood.innerHTML = "";
-
-        detaili.innerHTML=""
-        detaili.innerHTML+=
-        
+        detaili.innerHTML+=       
         `
         <div class="card mb-5 mx-auto" style="max-width: 1200px; height: 600px;">
   <div class="row g-0 h-100">
@@ -157,11 +159,7 @@ const detailfunc=(d)=>{
 </div>
 
 
-        `
-
-
-       
-        
+        `    
                
     })
 
@@ -171,3 +169,7 @@ const detailfunc=(d)=>{
 
    
 }
+
+
+
+
