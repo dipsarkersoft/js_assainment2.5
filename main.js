@@ -45,13 +45,14 @@ const mealFrnt=(x)=>{
 
 
 const searchfunc=(e)=>{
+  e.preventDefault();
     
-
     
     const hdesec = document.getElementById("hid");
-    hdesec.innerHTML = "";
+    hdesec.innerHTML="";
 
     const inputval=document.getElementById("val").value
+    console.log(inputval)
     
 
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputval}`)
@@ -59,7 +60,7 @@ const searchfunc=(e)=>{
     .then((data)=>{
 
         searchres(data)
-        console.log(data)
+       
        
     })
             
@@ -68,6 +69,7 @@ const searchfunc=(e)=>{
 
 
 const searchres=(e)=>{
+  
 
       if(e.meals == null){
 
